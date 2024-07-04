@@ -166,3 +166,9 @@
   font-size: 14px;
   color: #555;
 }
+
+.resMenu {
+  height: 50px;
+  width: 50px;
+  margin-left: 100px;
+}
