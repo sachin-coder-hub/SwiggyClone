@@ -3,6 +3,7 @@ import Shimmer from "./ShimmerUI";
 import { CDN_URL } from "../utils/constant";
 import { useParams } from "react-router-dom";
 import { resMenu_URL } from "../utils/constant";
+import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
@@ -32,26 +33,30 @@ const RestaurantMenu = () => {
   const { itemCards } =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card.card;
 
+  //Fetching restaurant menu consisting only itemcategory as heading
+
+  const categories =
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+  console.log(categories);
+
   //Returning Component
 
   return (
-    <div className="menu">
-      <h1>{name}</h1>
-      <h2>
+    <div className="menu text-center">
+      <h1 className="font-bold my-6 text-2xl font-serif">{name}</h1>
+      <p className="font-bold text-lg">
         {cuisines.join(", ")} - {costForTwoMessage}
-      </h2>
-      <h2>Menu</h2>
-      <ul>
-        {itemCards.map((item) => (
-          <li key={item.card.info.id}>
-            {item.card.info.name} -{"  ₹"}
-            {(item.card.info.price || item.card.info.defaultPrice) / 100}
-            {/* <span>
-              <img className="resMenu" src={CDN_URL + item.card.info.imageId} />
-            </span> */}
-          </li>
-        ))}
-      </ul>
+      </p>
+      {categories.map((category) => (
+        <RestaurantCategory
+          key={category.card.card.title}
+          data={category.card.card}
+        />
+      ))}
     </div>
   );
 };
