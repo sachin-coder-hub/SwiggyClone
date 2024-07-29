@@ -1,9 +1,11 @@
 import { LOG_URL } from "../utils/constant";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [loginButton, setLoginButton] = useState("Login");
+  const { loggedInUser } = useContext(UserContext);
   return (
     <div className="header flex justify-between bg-slate-50 shadow-lg m-2">
       <div className="logo-container">
@@ -11,6 +13,7 @@ const Header = () => {
       </div>
       <div className="nav-items flex items-center">
         <ul className="flex p-4 m-4">
+          <li className="px-4 p-2 font-bold">{loggedInUser}</li>
           <li className="px-4  hover:bg-orange-300  rounded-lg p-2">
             <Link to="/">Home</Link>
           </li>
