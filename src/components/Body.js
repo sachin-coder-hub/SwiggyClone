@@ -19,7 +19,7 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://cors-anywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
     setListOfResturants(
@@ -49,7 +49,7 @@ const Body = () => {
   return (
     <div className="body">
       <div className="filter flex">
-        <div className="search m-4 p-4">
+        <div className="search m-4 p-4 ml-12">
           <input
             type="search"
             className="search-box border border-solid border-black rounded-lg"
@@ -84,7 +84,7 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <div className="res-container flex flex-wrap">
+      <div className="res-container flex flex-wrap gap-6 ml-8">
         {filteredRestaurants.map((restaurant) => (
           <Link
             key={restaurant.info.id}
