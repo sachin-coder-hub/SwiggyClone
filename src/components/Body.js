@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Shimmer from "./ShimmerUI";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { restaurantListJson } from "../utils/constant";
 
 const Body = () => {
   const [listOfResturants, setListOfResturants] = useState([]);
@@ -17,17 +18,11 @@ const Body = () => {
 
   // Fetching list of restaurants and thier data
 
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://cors-anywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
-    setListOfResturants(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredRestaurants(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+  const fetchData = () => {
+    const json = restaurantListJson;
+    console.log(json);
+    setListOfResturants(json);
+    setFilteredRestaurants(json);
   };
 
   // Checking Internet connection of user
