@@ -39,7 +39,16 @@ const Cart = () => {
       )}
 
       <div className="w-full md:w-6/12 m-auto shadow-lg mt-5">
-        <ItemLists items={cartItems} />
+        {cartItems.map((item) => (
+          <ItemLists
+            key={item.id}
+            item={item}
+            name={item.name}
+            imageId={item.imageId}
+            price={item.price}
+            id={item.id}
+          />
+        ))}
       </div>
     </div>
   );
