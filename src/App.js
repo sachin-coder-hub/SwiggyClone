@@ -3,6 +3,7 @@ import ReactDom from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import About from "./components/About";
+import OrderConfirm from "./components/OrderConfirm";
 // import Contact from "./components/Contact";
 import Cart from "./components/Cart";
 import Error from "./components/Error";
@@ -64,6 +65,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurants/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/OrderConfirm",
+        element: <OrderConfirm />,
       },
     ],
     errorElement: <Error />,
