@@ -6,6 +6,10 @@ const ItemLists = ({ name, id, imageId, price, item }) => {
   const dispatch = useDispatch();
   const handleAddItem = (item) => {
     dispatch(addItem(item));
+    if ("vibrate" in navigator) {
+      // vibration API supported
+      navigator.vibrate(50);
+    }
   };
 
   return (
