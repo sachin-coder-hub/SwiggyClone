@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ItemLists from "./ItemLists";
 import { clearCart } from "../utils/cartSlice";
 import { Link } from "react-router-dom";
+import emptyCart from "../components/assets/emptyCart.png";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
@@ -32,11 +33,7 @@ const Cart = () => {
 
       {cartItems.length === 0 && (
         <div className="flex flex-col items-center mt-5">
-          <img
-            className="w-60 rounded-lg"
-            src="https://cdni.iconscout.com/illustration/premium/thumb/empty-cart-7359557-6024626.png?f=webp"
-            alt="Empty Cart"
-          />
+          <img className="w-60 rounded-lg" src={emptyCart} alt="Empty Cart" />
           <button className="bg-slate-100 p-2 rounded-lg shadow-md mt-4">
             <Link to="/">🫤 Cart is empty, Please add items to the cart</Link>
           </button>

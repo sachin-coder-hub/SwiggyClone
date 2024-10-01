@@ -3,7 +3,8 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
-import "font-awesome/css/font-awesome.min.css"; // Import Font Awesome CSS
+import "font-awesome/css/font-awesome.min.css"; // Import Font Awesome
+import fastFoodLogo from "../components/assets/fastFoodLogo.jpg";
 
 const Header = () => {
   const [loginButton, setLoginButton] = useState("Login");
@@ -16,7 +17,7 @@ const Header = () => {
       <div className="logo-container">
         <img
           className="logo w-32 sm:w-20 md:w-24 lg:w-28 xl:w-32"
-          src={LOG_URL}
+          src={fastFoodLogo}
           alt="Logo"
         />
       </div>

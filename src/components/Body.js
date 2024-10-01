@@ -28,7 +28,6 @@ const Body = () => {
 
   const fetchData = () => {
     const json = restaurantListJson;
-    console.log(json);
     setListOfResturants(json);
     setFilteredRestaurants(json);
   };
