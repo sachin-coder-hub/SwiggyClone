@@ -34,7 +34,7 @@ const ItemLists = ({ name, id, imageId, price, item }) => {
                   <p className="text-sm"></p>
                 </div>
                 <div className="text-right">
-                  <p className="text-lg font-semibold mx-4">₹{price / 100}</p>
+                  <p className="text-lg font-semibold">₹{price / 100}</p>
                 </div>
               </div>
               <div className="flex divide-x text-sm">
