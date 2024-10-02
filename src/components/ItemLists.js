@@ -13,7 +13,7 @@ const ItemLists = ({ name, id, imageId, price, item }) => {
   };
 
   return (
-    <div className="mx-auto flex max-w-3xl flex-col  my-4 p-2 px-2 sm: sm:px-2">
+    <div className="mx-auto flex max-w-3xl flex-col  my-4 p-2 px-2 sm: sm:px-2 bg-gray-100 rounded-lg shadow-md">
       <ul className="flex flex-col divide-y divide-gray-200">
         <li
           key={id}
@@ -21,7 +21,7 @@ const ItemLists = ({ name, id, imageId, price, item }) => {
         >
           <div className="flex w-full space-x-2  sm:space-x-4">
             <img
-              className="h-20 w-20 flex-shrink-0 rounded-2xl object-contain outline-none dark:border-transparent sm:h-32 sm:w-32"
+              className="h-20 w-20 flex-shrink-0 rounded-2xl shadow-md object-contain outline-none sm:h-32 sm:w-32"
               src={CDN_URL + imageId}
               alt={name}
             />
@@ -34,7 +34,7 @@ const ItemLists = ({ name, id, imageId, price, item }) => {
                   <p className="text-sm"></p>
                 </div>
                 <div className="text-right">
-                  <p className="text-lg font-semibold">₹{price / 100}</p>
+                  <p className="text-lg font-semibold mx-4">₹{price / 100}</p>
                 </div>
               </div>
               <div className="flex divide-x text-sm">

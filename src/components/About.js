@@ -1,4 +1,9 @@
 import React from "react";
+import Rider from "../components/assets/Rider.png";
+import Grocery from "../components/assets/Grocery.png";
+import GuyOnRocket from "../components/assets/GuyOnRocket.png";
+import GooglePlay from "../components/assets/GooglePlay.png";
+import AppStore from "../components/assets/AppStore.png";
 
 const About = () => {
   return (
@@ -8,7 +13,7 @@ const About = () => {
           {/* Left Image */}
           <div className="absolute left-0 bottom-0 hidden md:block">
             <img
-              src="https://www.swiggy.com/corporate/wp-content/uploads/2024/04/DE-on-bike-2-2.png"
+              src={Rider}
               className="h-[80%] max-w-[300px] object-contain"
               alt="Swiggy delivery person"
             />
@@ -29,7 +34,7 @@ const About = () => {
           {/* Right Image */}
           <div className="absolute right-0 bottom-0 hidden md:block">
             <img
-              src="https://www.swiggy.com/corporate/wp-content/uploads/2024/04/03-Instamart_3_front_view_2_skycolour.png"
+              src={Grocery}
               className="h-[80%] max-w-[300px] object-contain"
               alt="Swiggy Instamart"
             />
@@ -39,7 +44,7 @@ const About = () => {
       <div className="secondary-section p-4">
         <div className="flex flex-col justify-center items-center mb-4">
           <img
-            src="https://www.swiggy.com/corporate/wp-content/uploads/2024/04/about-img1-new.png"
+            src={GuyOnRocket}
             className="h-60 w-auto max-w-full"
             alt="About FastFood"
           />
@@ -91,16 +96,8 @@ const About = () => {
           <p className="text-white font-serif">
             For a better experience, download the FastFood app now
           </p>
-          <img
-            src="https://www.swiggy.com/corporate/wp-content/uploads/2024/03/Group-48098150.png"
-            className="w-24 h-12"
-            alt="Google Play"
-          />
-          <img
-            src="https://www.swiggy.com/corporate/wp-content/uploads/2024/03/appstore-logo.png"
-            className="w-24 h-12"
-            alt="App Store"
-          />
+          <img src={GooglePlay} className="w-24 h-12" alt="Google Play" />
+          <img src={AppStore} className="w-24 h-12" alt="App Store" />
         </div>
       </div>
     </div>

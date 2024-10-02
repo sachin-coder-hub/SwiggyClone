@@ -3,11 +3,20 @@ import ItemLists from "./ItemLists";
 import { clearCart } from "../utils/cartSlice";
 import { Link } from "react-router-dom";
 import emptyCart from "../components/assets/emptyCart.png";
+import { useState } from "react";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
   const cartTotal = useSelector((store) => store.cart);
   const dispatch = useDispatch();
+  const [isCheckedOut, setIsCheckedOut] = useState(false);
+
+  const handleCheckout = () => {
+    setIsCheckedOut((prevState) => !prevState);
+  };
+  const handleBack = () => {
+    setIsCheckedOut((prevState) => !prevState);
+  };
 
   const handleClearCart = () => {
     dispatch(clearCart());
@@ -39,68 +48,86 @@ const Cart = () => {
           </button>
         </div>
       )}
-      <section>
-        <div className="w-full md:w-6/12 m-auto shadow-lg mt-5">
-          {cartItems.map((item) => (
-            <ItemLists
-              key={item.id}
-              item={item}
-              name={item.name}
-              imageId={item.imageId}
-              price={item.price}
-              id={item.id}
-            />
-          ))}
-        </div>
-      </section>
-      <section
-        aria-labelledby="summary-heading"
-        className="mt-16 rounded-md  dark:bg-brand-coal dark:text-brand-beige bg-white lg:col-span-4 lg:mt-0 lg:p-0"
-      >
-        <h2
-          id="summary-heading"
-          className=" border-b  dark:text-brand-beige border-gray-200 px-4 py-3 text-lg font-medium text-gray-900 sm:p-4"
+      {!isCheckedOut && cartItems.length !== 0 && (
+        <section>
+          <div className="w-full md:w-6/12 m-auto shadow-lg mt-5">
+            {cartItems.map((item) => (
+              <ItemLists
+                key={item.id}
+                item={item}
+                name={item.name}
+                imageId={item.imageId}
+                price={item.price}
+                id={item.id}
+              />
+            ))}
+          </div>
+          <button
+            className="bg-green-500  text-white  hover:bg-green-400 px-3 py-1 font-bold rounded-lg mt-5"
+            onClick={handleCheckout}
+          >
+            Checkout & Pay
+          </button>
+        </section>
+      )}
+      {isCheckedOut && (
+        <section
+          aria-labelledby="summary-heading"
+          className="mt-16 rounded-md bg-white lg:col-span-4 lg:mx-96 lg:px-10"
         >
-          Price Details
-        </h2>
-        <div>
-          <dl className=" space-y-1 px-2 py-4">
-            <div className="flex items-center justify-between">
-              <dt className="text-sm  dark:text-brand-beige text-gray-800">
-                Price ({cartItems?.length} item)
-              </dt>
-              <dd className="text-sm font-medium  dark:text-brand-beige text-gray-900">
-                ₹{cartTotal?.total / 100}
-              </dd>
-            </div>
+          <h2
+            id="summary-heading"
+            className=" border-b font-bold  border-gray-200 px-4 py-3 text-lg text-gray-900 sm:p-4"
+          >
+            Price Details
+          </h2>
+          <div>
+            <dl className=" space-y-1 px-2 py-4">
+              <div className="flex items-center justify-between">
+                <dt className="text-sm  text-gray-800">
+                  Price ({cartItems?.length} item)
+                </dt>
+                <dd className="text-sm font-medium text-gray-900">
+                  ₹{cartTotal?.total / 100}
+                </dd>
+              </div>
 
-            <div className="flex items-center justify-between py-4">
-              <dt className="flex text-sm  dark:text-brand-beige text-gray-800">
-                <span>Delivery Charges</span>
-              </dt>
-              <dd className="text-sm font-bold ml-2  dark:text-brand-green text-green-700">
-                Free
-              </dd>
+              <div className="flex items-center justify-between py-4">
+                <dt className="flex text-sm text-gray-800">
+                  <span>Delivery Charges</span>
+                </dt>
+                <dd className="text-sm font-bold ml-2   text-green-700">
+                  Free
+                </dd>
+              </div>
+              <div className="flex items-center justify-between border-y border-dashed py-4 ">
+                <dt className="text-base font-medium  text-gray-900">
+                  Total Amount
+                </dt>
+                <dd className="text-base font-medium  ml-2 text-gray-900">
+                  ₹{cartTotal?.total / 100}
+                </dd>
+              </div>
+            </dl>
+            <div className="flex justify-between">
+              <button
+                className="bg-slate-200  text-black hover:bg-slate-300 px-3 py-1 font-bold rounded-lg mt-5 mx-2"
+                onClick={handleBack}
+              >
+                Back to Cart
+              </button>
+              <Link to={"/OrderConfirm"}>
+                <button
+                  onClick={handleOrderNow}
+                  className="bg-green-500 text-white  hover:bg-green-400 px-3 py-1 font-bold rounded-lg mt-5 mx-2"
+                >
+                  ORDER NOW
+                </button>
+              </Link>
             </div>
-            <div className="flex items-center justify-between border-y border-dashed py-4 ">
-              <dt className="text-base font-medium  dark:text-brand-beige text-gray-900">
-                Total Amount
-              </dt>
-              <dd className="text-base font-medium  dark:text-brand-beige ml-2 text-gray-900">
-                ₹{cartTotal?.total / 100}
-              </dd>
-            </div>
-          </dl>
-          <Link to={"/OrderConfirm"}>
-            <button
-              onClick={handleOrderNow}
-              className="bg-green-500 dark:bg-brand-green text-white  hover:bg-green-400 px-3 py-1 font-bold rounded-lg mt-5"
-            >
-              ORDER NOW
-            </button>
-          </Link>
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
     </div>
   );
 };

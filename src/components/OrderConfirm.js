@@ -9,7 +9,7 @@ const OrderConfirm = () => {
         alt="Delivery Image"
       />
       <div className="flex justify-center">
-        <p className="dark:text-brand-beige mt-5 text-3xl text-center">
+        <p className="mt-5 text-3xl text-center">
           Order placed..!🎉 Please sit back and relax😎
         </p>
       </div>

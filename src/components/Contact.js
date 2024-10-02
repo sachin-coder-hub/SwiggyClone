@@ -1,5 +1,6 @@
 import { useState } from "react";
 import contactUsImg from "../components/assets/contactUsImg.png";
+import contactUspage from "../components/assets/contactUspage.png";
 import { Link } from "react-router-dom";
 
 const Contact = () => {
@@ -28,53 +29,63 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex justify-center">
-      {!isContacted && (
-        <div className="bg-orange-600 shadow-lg rounded-2xl m-4 p-4 w-full max-w-lg">
-          <h1 className="font-bold text-2xl p-4 text-center text-white">
-            Contact Us
-          </h1>
-          <p className="font-sans text-xl p-4 text-center text-white">
-            Hi there! How can we help you today?
-          </p>
-          <form className="flex flex-col items-center" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="name" // Bind to formData state
-              value={formData.name}
-              onChange={handleChange} // Update state on change
-              placeholder="Name"
-              className="border p-2 m-2 rounded-lg w-2/3"
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Email"
-              className="border p-2 m-2 rounded-lg w-2/3"
-              required
-            />
-            <input
-              type="text"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Your Message"
-              className="border p-2 m-2 rounded-lg w-2/3"
-              required
-            />
+    <div className="flex justify-center bg-yellow-100 mt-5 mx-4 md:mx-auto md:max-w-5xl rounded-xl shadow-xl">
+      <div className="flex flex-row md:justify-start gap-10">
+        <img
+          src={contactUspage}
+          className="hidden lg:block w-full md:w-3/4 max-w-md p-4"
+          alt="Contact Us"
+        />
+        {!isContacted && (
+          <div className="bg-orange-500 shadow-lg rounded-2xl m-4 p-4 w-full max-w-lg">
+            <h1 className="font-bold text-2xl p-4 text-center text-white">
+              Contact Us
+            </h1>
+            <p className="font-sans text-xl p-4 text-center text-white">
+              Hi there! How can we help you today?
+            </p>
+            <form
+              className="flex flex-col items-center"
+              onSubmit={handleSubmit}
+            >
+              <input
+                type="text"
+                name="name" // Bind to formData state
+                value={formData.name}
+                onChange={handleChange} // Update state on change
+                placeholder="Name"
+                className="border p-2 m-2 rounded-lg w-2/3"
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Email"
+                className="border p-2 m-2 rounded-lg w-2/3"
+                required
+              />
+              <input
+                type="text"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Your Message"
+                className="border p-2 m-2 rounded-lg w-2/3"
+                required
+              />
 
-            {/* Center the submit button */}
-            <div className="w-full flex justify-center mt-4">
-              <button className="border border-black p-2 bg-slate-900 text-white rounded-lg w-1/2">
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
-      )}
+              {/* Center the submit button */}
+              <div className="w-full flex justify-center mt-4">
+                <button className="border border-black p-2 bg-slate-900 text-white rounded-lg w-1/2">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
+      </div>
       {isContacted && (
         <div className="text-center">
           <img src={contactUsImg} className="w-96 h-64 m-5" alt="Thank you!" />

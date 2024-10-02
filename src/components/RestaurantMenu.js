@@ -16,7 +16,7 @@ const RestaurantMenu = () => {
     <Shimmer />
   ) : (
     <>
-      <div className="container mx-auto  dark:text-brand-beige md:mx-auto">
+      <div className="container mx-auto md:mx-auto">
         {filteredMenu.map((item) => (
           <ItemLists
             key={item?.card?.info?.id}
